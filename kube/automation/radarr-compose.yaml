@@ -1,0 +1,18 @@
+---
+version: "1.0"
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:4.1.0
+    container_name: radarr
+    environment:
+      - PUID=1003
+      - PGID=1003
+      - TZ=America/Chicago
+    volumes:
+      - /home/radarr/.config/Radarr:/config
+      - /plex/Movies:/plex/Movies
+      - /plex/:/plex
+      - /opt/sabnzbd:/datadir
+    ports:
+      - 7878:7878
+    restart: unless-stopped

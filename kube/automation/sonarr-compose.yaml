@@ -1,0 +1,17 @@
+---
+version: "1.0"
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:3.0.8
+    container_name: sonarr
+    environment:
+      - PUID=1001
+      - PGID=1001
+      - TZ=America/Chicago
+    volumes:
+      - /home/sonarr/.config/NzbDrone:/config
+      - /plex/TV\ Shows:/plex/TV\ Shows
+      - /plex/:/plex/downloads
+    ports:
+      - 8989:8989
+    restart: unless-stopped
